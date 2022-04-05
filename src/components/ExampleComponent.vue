@@ -21,6 +21,7 @@ import {
   toRef,
   Ref,
 } from 'vue';
+import useTest from './composables/useTest';
 import { Todo, Meta } from './models';
 
 function useClickCount() {
@@ -58,6 +59,9 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { showValue } = useTest();
+    showValue();
+
     return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) };
   },
 });
